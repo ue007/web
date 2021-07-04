@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "node ./server/server.js"
+    "dev:server": "node ./src/server/server.js",
+    "dev:server:ts": "node ./dist/server/server.js",
+    "tsc:server": "tsc -p ./src/server"
   },
   "keywords": [
     "ue007"

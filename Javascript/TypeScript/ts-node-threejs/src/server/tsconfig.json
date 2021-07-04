@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "es6",
+        "outDir": "../../dist/server",
+        "baseUrl": ".",
+        "sourceMap": true,
+        "paths": {
+            "../../node_modules/three/examples/jsm/loaders/STLLoader": [
+                "../../node_modules/three/examples/jsm/loaders/"
+            ]
+        },
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "allowJs": true,
+        "checkJs": true
+    },
+    "include": [
+        "**/*.ts"
+    ]
+}
