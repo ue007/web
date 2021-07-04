@@ -1,0 +1,78 @@
+<html>
+  <head> </head>
+  <body>
+    <script>
+      // 使用promise封装ajax
+      function sendAjax(url) {
+        let xhr = new XMLHttpRequest();
+        return new Promise(function (resolve, reject) {
+          xhr.open("GET", url);
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                resolve(xhr.responseText); // 成功执行 resolve
+              } else {
+                reject(); // 失败执行 reject
+              }
+            }
+          };
+          xhr.send();
+        });
+      }
+
+      let p1 = sendAjax("./datas/arr.txt");
+      p1.then(
+        function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        function () {
+          console.log("失败了");
+        }
+      );
+
+      let p2 = sendAjax("./datas/json.txt");
+      p2.then(
+        function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        function () {
+          console.log("失败了");
+        }
+      );
+
+      // 使用promise.all
+      function createPromise(url) {
+        let xhr = new XMLHttpRequest();
+        return new Promise(function (resolve, reject) {
+          xhr.open("GET", url);
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                resolve(xhr.responseText);
+              } else {
+                reject();
+              }
+            }
+          };
+          xhr.send();
+        });
+      }
+
+      Promise.all([
+        createPromise("./datas/arr1.txt"), // 现在这里看起来就像是同步代码了
+        createPromise("./datas/arr.txt"),
+        createPromise("./datas/json.txt"),
+      ]).then(
+        (data) => {
+          console.log("成功了");
+          console.log(data);
+        },
+        () => {
+          console.log("至少有一个失败了");
+        }
+      );
+    </script>
+  </body>
+</html>

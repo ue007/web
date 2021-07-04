@@ -1,0 +1,32 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      function ajax(URL) {
+        return new Promise(function (resolve, reject) {
+          var req = new XMLHttpRequest();
+          req.open("GET", URL, true);
+          req.onload = function () {
+            if (req.status === 200) {
+              resolve(req.responseText);
+            } else {
+              reject(new Error(req.statusText));
+            }
+          };
+          req.onerror = function () {
+            reject(new Error(req.statusText));
+          };
+          req.send();
+        });
+      }
+      var URL = "./index.js";
+      ajax(URL)
+        .then(function onFulfilled(value) {
+          console.log("内容是：" + value);
+        })
+        .catch(function onRejected(error) {
+          console.log("错误：" + error);
+        });
+    </script>
+  </body>
+</html>

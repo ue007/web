@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  </head>
+  <body>
+    <script>
+      // jquery原生
+      $.ajax({
+        url: "./datas/arr.txt",
+        dataType: "json",
+        success: function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        error: function (err) {
+          console.log("失败了");
+          console.log(err);
+        },
+      });
+
+      $.ajax({
+        url: "./datas/json.txt",
+        dataType: "json",
+        success: function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        error: function (err) {
+          console.log("失败了");
+          console.log(err);
+        },
+      });
+
+      //简单封装
+      function sendAjax(url, success, error) {
+        $.ajax({
+          url: url,
+          dataType: "json",
+          success,
+          error,
+        });
+      }
+
+      sendAjax(
+        "./datas/arr.txt",
+        function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        function (err) {
+          console.log("失败了");
+          console.log(err);
+        }
+      );
+      sendAjax(
+        "./datas/json.txt",
+        function (data) {
+          console.log("成功了");
+          console.log(data);
+        },
+        function (err) {
+          console.log("失败了");
+          console.log(err);
+        }
+      );
+
+      //嵌套调用
+      sendAjax(
+        "./datas/arr.txt",
+        function (data) {
+          console.log("成功了");
+          console.log(data);
+
+          sendAjax(
+            "./datas/json.txt",
+            function (data) {
+              console.log("成功了");
+              console.log(data);
+            },
+            function (err) {
+              console.log("失败了");
+              console.log(err);
+            }
+          );
+        },
+        function (err) {
+          console.log("失败了");
+          console.log(err);
+        }
+      );
+    </script>
+  </body>
+</html>
