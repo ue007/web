@@ -1,7 +1,7 @@
 import express from 'express';
 import http from 'http';
 import path from 'path';
-import apis from './api.js';
+import apis from './apis/api.js';
 import * as THREE from 'three';
 import { OBJLoader } from './OBJLoader.js';
 

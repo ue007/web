@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import * as THREE from 'three';
-import apis from './api.js';
-import { OBJLoader } from './OBJLoader.js';
+import apis from './apis/api.js';
+import { OBJLoader } from './loaders/OBJLoader.js';
 
 type OptionsType = {
   ip: string;
